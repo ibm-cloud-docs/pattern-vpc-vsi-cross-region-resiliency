@@ -1,12 +1,12 @@
 {
-  "title": "Name of architecture",
-  "lastupdated": "2023-04-06",
-  "introduction": "This is a description of what the user will be able to understand in this architecture pattern.",
+  "title": "Web App Cross-Region Resiliency",
+  "lastupdated": "2023-12-13",
+  "introduction": "The Web App Cross-Region Resiliency pattern deploys a 3-tier web application on VPC Virtual Servers using compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.",
   "section_architectures": [
     {
-      "title": "Title of reference architecture",
+      "title": "Web App Cross-Region Resiliency",
       "href": "/docs/acme-test?topic=acme-test-vpc-architecture",
-      "deployable": true
+      "deployable": false
     },
     {
       "title": "Title of reference architecture",

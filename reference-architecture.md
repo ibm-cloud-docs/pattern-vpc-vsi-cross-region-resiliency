@@ -28,31 +28,23 @@ industry:
 # https://github.ibm.com/digital/taxonomy/blob/main/compliance_entities/compliance_entities_flat_list.csv
 compliance:
 
-content-type: reference-architecture
+# content-type: reference-architecture
 
 ---
 
-{{site.data.keyword.attribute-definition-list}}
+# Web App Cross-Region Resiliency
+{: #pattern-title}
 
 <!--
 The following line inserts all the attribute definitions. Don't delete.
--->
-{{site.data.keyword.attribute-definition-list}}
 
-<!--
-Don't include "reference architecture" in the following title.
-Specify a title based on a use case. If the architecture has a module
-or tile in the IBM Cloud catalog, match the title to the catalog. See
-https://test.cloud.ibm.com/docs/solution-as-code?topic=solution-as-code-naming-guidance.
--->
-
-# Web App Cross-Region Resiliency
 {: #title-id}
 {: toc-content-type="reference-architecture"}
 {: toc-industry="value"}
 {: toc-use-case="value"}
 {: toc-compliance="value"}
 {: toc-version="value"}
+-->
 
 <!--
 The IDs, such as {: #title-id} are required for publishing this reference architecture in IBM Cloud Docs. Set unique IDs for each heading. Also include

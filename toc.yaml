@@ -9,7 +9,7 @@ toc:
     # use-case: use-case-value
     # compliance: compliance-value
     audience: solution
-    content-type: reference-architecture
+    content-type: deployment
     href: /docs/pattern-vpc-vsi-cross-region-resiliency
     path: pattern-vpc-vsi-cross-region-resiliency
     description: This pattern provides a solution design for a 3-tier web architecture deployment on IBM Cloud VPC Virtual Servers that meets disaster recovery requirements for enterprise workloads.
