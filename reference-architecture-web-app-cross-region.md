@@ -100,7 +100,7 @@ Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-f
 
 - **Service Management:** Monitoring, Logging, Auditing, Alerting
 
- ![Web App Cross-Region Resiliency Solution Design Scope](heatmap-vpc-cross-region.svg){: caption="Figure 1. Web App Cross-Region Resiliency Solution Design Scope" caption-side="bottom"}
+ ![Web App Cross-Region Resiliency Solution Design Scope](heat-map-vpc-cross-region.svg){: caption="Figure 1. Web App Cross-Region Resiliency Solution Design Scope" caption-side="bottom"}
 
 \*The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro) for more details.
 
