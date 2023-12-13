@@ -34,14 +34,11 @@ content-type: reference-architecture
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Reference architecture
-{: #title-id}
+# Web App Cross-Region Resiliency
+{: #web-app-cross-region}
 {: toc-content-type="reference-architecture"}
 {: toc-use-case="VirtualPrivateCloud"}
 {: toc-version="1.0"}
-
-# Web App Cross-Region Resiliency
-{: #web-app-cross-region}
 
 The Web App Cross-Region Resiliency pattern deploys a 3-tier web application on VPC Virtual Servers using compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.
 
