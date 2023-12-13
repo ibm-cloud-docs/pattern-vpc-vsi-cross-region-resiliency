@@ -24,7 +24,7 @@ toc:
   - navgroup:
       id: architecture
       topics:
-      - reference-architecture.md
+      - reference-architecture-web-app-cross-region.md
 
   - navgroup:
       id: plan

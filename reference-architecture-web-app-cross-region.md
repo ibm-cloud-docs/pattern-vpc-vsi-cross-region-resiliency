@@ -9,31 +9,31 @@ subcollection: pattern-vpc-vsi-cross-region-resiliency
 keywords:
 
 # The release that the reference architecture describes
-version: 1.0
+# version: 1.0
 
 # Use if the reference architecture has deployable code.
 # Value is the URL to land the user in the IBM Cloud catalog details page for the deployable architecture.
 # See https://test.cloud.ibm.com/docs/get-coding?topic=get-coding-deploy-button
-deployment-url: url
+# deployment-url: url
 
 # use-case from 'code' column in
 # https://github.ibm.com/digital/taxonomy/blob/main/topics/topics_flat_list.csv
-use-case: Virtual private cloud
+# use-case: Virtual private cloud
 
 # industry from 'code' column in
 # https://github.ibm.com/digital/taxonomy/blob/main/industries/industries_flat_list.csv
-industry:
+# industry:
 
 # compliance from 'code' column in
 # https://github.ibm.com/digital/taxonomy/blob/main/compliance_entities/compliance_entities_flat_list.csv
-compliance:
+# compliance:
 
 # content-type: reference-architecture
 
 ---
 
 # Web App Cross-Region Resiliency
-{: #pattern-title}
+{: #web-app-cross-region}
 
 <!--
 The following line inserts all the attribute definitions. Don't delete.
