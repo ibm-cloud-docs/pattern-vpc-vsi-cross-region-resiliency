@@ -4,23 +4,22 @@
 ---
 toc:
   properties:
-    subcollection: <repo-name>
-    industry: industry-value
-    use-case: use-case-value
-    compliance: compliance-value
+    subcollection: pattern-vpc-vsi-cross-region-resiliency
+    # industry: industry-value
+    # use-case: use-case-value
+    # compliance: compliance-value
     audience: solution
-    content-type: deployment
-    href: /docs/<repo-name>
-    path: <repo-name>
-    description: Pattern description
-    label: Pattern name
+    content-type: reference-architecture
+    href: /docs/pattern-vpc-vsi-cross-region-resiliency
+    path: pattern-vpc-vsi-cross-region-resiliency
+    description: This pattern provides a solution design for a 3-tier web architecture deployment on IBM Cloud VPC Virtual Servers that meets disaster recovery requirements for enterprise workloads.
+    label: Web App Cross-Region Resiliency
 
   entries:
   - navgroup:
       id: overview
       topics:
       - overview.md
-      - requirements.md
 
   - navgroup:
       id: architecture
@@ -45,7 +44,7 @@ toc:
             navtitle: Resiliency
           - topic: service-management-design.md
             navtitle: Service management
-          - other-design.md
+          # - other-design.md
       - topicgroup:
           label: Architecture decisions
           topics:
@@ -61,7 +60,9 @@ toc:
             navtitle: Resiliency
           - topic: service-management-architecture.md
             navtitle: Service management
-          - other-architecture.md
+          - topic: all-architecture-decisions.md
+            navtitle: All Architecture Decisions
+          # - other-architecture.md
 
   - navgroup:
       id: deploy

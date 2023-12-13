@@ -4,7 +4,7 @@ copyright:
   years: 2023
 lastupdated: "2023-11-28"
 
-subcollection: <repo-name>
+subcollection: pattern-vpc-vsi-cross-region-resiliency
 
 keywords:
 
@@ -66,4 +66,3 @@ Intro text...
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | Public DNS | Provide DNS resolution to support use of hostnames instead of IP addresses for applications | * IBM Cloud Internet Services (CIS) \n * IBM Cloud DNS	IBM Cloud Internet Services (CIS) | IBM Cloud DNS	IBM Cloud Internet Services (CIS) | IBM Cloud Internet Services supports provisioning and configuring DNS records for public DNS resolution and can be integrated with the public VPC ALBs for the web tier. |
 {: caption="Table 5. Domain name system (DNS) architecture decisions" caption-side="bottom"}
-

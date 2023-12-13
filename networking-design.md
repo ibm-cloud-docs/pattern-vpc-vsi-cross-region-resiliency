@@ -4,7 +4,7 @@ copyright:
   years: 2023
 lastupdated: "2023-12-12"
 
-subcollection: whitepaper-vpc-resiliency
+subcollection: pattern-vpc-vsi-cross-region-resiliency
 
 keywords:
 
@@ -13,37 +13,34 @@ keywords:
 # Networking design
 {: #networking-design}
 
-IBM Cloud Virtual Private Cloud infrastructure and network services support multi-zone and multi-region deployment architectures for high availability and disaster recovery.
+The Cross-Region Resiliency pattern for Web Apps leverages IBM Cloud Virtual Private Cloud infrastructure and network services to segment the application tiers and support the application deployment across multiple availability zones in two regions.
 
-VPC Load balancers are used to distribute traffic across multiple zones within a region and support highly available configurations. There are two types of VPC Load Balancers:
+-   Deploy the Web App within a Virtual Private Cloud (VPC) provisioned across multiple availability zones within a region to provide workload isolation within the public cloud. Place each Web App tier in a separate subnet in each availability zone. Use security groups and ACLs as firewalls to limit access to virtual server instances for operational purposes and to control network traffic to each web app tier.
 
--   Application Load Balancers (ALB): provide layer 4 and layer 7 load balancing, support SSL offloading and are recommended for web-based workloads.
+-   Create an instance group for the VPC Virtual Server instances in the Web and App tiers to enable auto-scaling using a VPC Load Balancer.
 
--   Network Load Balancers: provide layer 4 load balancing and supports Source IP Preservation and Direct Server Return. It is recommended for workloads that require low latency and high data throughput.
+-   Use VPC Application Load Balancers (ALB) to distribute incoming requests among the virtual server instances within the web and app tiers. Configure load balancing policies, rules, and check health settings to distribute the requests across the available virtual servers. Integrate the VPC ALB with the Virtual Servers Instance Group for the tier to auto-scale this backend pool based on load requirements.
 
-The following table shows a comparison of these Load Balancers.
+-   Use a Public Application Load Balancer for the web tier in the front end. Use a Private Application Load Balancer for the application tier in the backend. Use the assigned FQDNs to send traffic to the ALBs to avoid connectivity problems.
 
-| **Category**                 | **Network Load Balancer (NLB)**                                                                                                                                                                                                                 | **Application Load Balancer (ALB)**                                                                                                        |
-|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| **Features**                 | - Layer 4 load balancing \n - VNF routing \n - TCP and UDP support \n - Direct Server Return (DSR) \n - Source IP Preserved                                                                                                                                 | - Layer 4 and 7 load balancing \n - Policy-based routing \n - HTTP, HTTPS, TCP support \n - SSL offloading \n - Source IP Preserved (proxy)            |
-| **Recommended Use**          | Workloads that require low latency & high data throughput                                                                                                                                                                                       | Web-based workloads                                                                                                                        |
-| **HA mode**                  | Active-standby (w/ single VIP)                                                                                                                                                                                                                  | Active-active (w/ multiple VIPs assigned to a DNS name)                                                                                    |
-| **Instance group support**   | Yes (see [Integrating NLB for VPC with instance groups](https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-integration-with-instance-groups))                                                                                                         | Yes (see [Integrating ALB for VPC with instance groups](https://cloud.ibm.com/docs/vpc?topic=vpc-lbaas-integration-with-instance-groups))  |
-| **Monitoring metrics**       | Yes                                                                                                                                                                                                                                             | Yes                                                                                                                                        |
-| **Multi-zone support**       | Accepts members across all three availability zones. Deploy in each zone along with Global Load Balancer for multi-zone availability (see [Multi-zone support](https://cloud.ibm.com/docs/vpc?topic=vpc-network-load-balancers#nlb-use-case-2)) | Yes. Deploy in region and configure subnets across availability zones.                                                                     |
-| **Security group support**   | No                                                                                                                                                                                                                                              | Yes (see [Integrating an ALB for VPC with security groups](https://cloud.ibm.com/docs/vpc?topic=vpc-alb-integration-with-security-groups)) |
-| **Source IP preserved**      | Yes                                                                                                                                                                                                                                             | Yes ([with proxy protocol](https://cloud.ibm.com/docs/vpc?topic=vpc-advanced-traffic-management#preserving-end-client-ip-address))         |
-| **SSL offloading**           | No                                                                                                                                                                                                                                              | Yes                                                                                                                                        |
-| **Types of load balancers**  | Public and private                                                                                                                                                                                                                              | Public and private                                                                                                                         |
-| **Virtual IP Address (VIP)** | Single                                                                                                                                                                                                                                          | Multiple                                                                                                                                   |
-| **Route mode for VNFs**      | Yes (see [Setting up high availability for Virtual Network Functions (VNF)](https://cloud.ibm.com/docs/vpc?topic=vpc-about-vnf))                                                                                                                | No                                                                                                                                         |
-| **Member type**              | Virtual server instances                                                                                                                                                                                                                        | Virtual server instances, Bare Metal, Power Systems Virtual Server                                                                         |
-{: caption="Table 1. Comparison of VPC Load Balancers" caption-side="bottom"}
+-   Configure the Application Load Balancers for high availability by selecting the subnets in each availability zone where the virtual servers are deployed. The ALB automatically provisions load balancing appliances for each subnet zone.
 
-The Cloud Internet Service (CIS) provides a Global Load Balancer that can distribute traffic on the public network across availability zones within a region in a multi-zone deployment or across multiple regions in a multi-region deployment.
+-   Configure the Cloud Internet Service (CIS) as a proxy to the public VPC Load Balancers for the web tier to leverage CIS capabilities such as Web Application Firewall (WAF) and DDoS protection to secure the Web Application.
 
-In active-active DR deployments, use IBM Cloud Internet Services (CIS) to reduce network latency for application users in different geographies. Define location-based pools and configure CIS to redirect users to the closest VPC load balancer based on the geographical location of the user requests.
+-   Use IBM Cloud Secrets Manager service to manage the Transport Layer Security (TLS) certificate for all incoming HTTPS requests. Make the SSL certificates available to the VPC Application Load Balancers to configure HTTPS encryption.
 
-CIS can also be configured as a proxy to a VPC Application Load Balancer in multi-zone or multi-region deployments to leverage CIS application security capabilities such as Web Application Firewall (WAF) and DDoS protection. See [Proxying DNS records and global load balancers](https://cloud.ibm.com/docs/cis?topic=cis-dns-concepts#dns-concepts-proxying-dns-records) for details.
+-   Use a Global Transit Gateway to enable connectivity between VPCs in the two regions for data replication to the DR site.
 
-![A screenshot of a computer Description automatically generated](4d9193657d91ddab0444a111d6e88d65.png){: caption="Figure 1. Cloud Internet Services (CIS) proxy for VPC load balancers" caption-side="bottom"}
+-   Use IBM Cloud Internet Services (CIS) Global Load Balancer to fail over to the DR region in the event of an outage in the primary region.
+
+    -   Connect the Global Load Balancer to the public VPC Load Balancers for the web tier and configure health checks to monitor the availability of the Web Application in each region.
+
+    -   Make the SSL certificates available to the CIS global load balancer to configure HTTPS encryption.
+
+-   Pre-configure all networking in the primary and DR sites before any sort of disaster declaration.
+
+    -   Select nonoverlapping CIDR blocks for VPC subnets in all locations.
+
+    -   Since a Global Transit Gateway is used to connect the VPCs in the two regions, the Routes for CIDR blocks in one multizone region (MZR) are advertised to the other ones such that no routing changes are required in a disaster situation.
+
+-   Use hostnames and DNS instead of IP addresses to minimize the number of changes required to redeploy an application in the DR site. Use CIS to provision and configure DNS records for public DNS resolution. Use IBM Cloud DNS to manage DNS records and resolve domain names from IBM Cloud's private network.
