@@ -42,8 +42,6 @@ keywords:
 ## Networking Architecture Decisions
 {: #networking-architecture-decisions}
 
-##
-
 | **\#**                                    | **AD**                                | **Requirement**                                                                                                                       | **Alternative**                                                                                                     | **Decision**                                    | **Rationale**                                                                                                                                                                                                                                                                                              |
 |-------------------------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **1. Enterprise Connectivity**            |                                       |                                                                                                                                       |                                                                                                                     |                                                 |                                                                                                                                                                                                                                                                                                            |
@@ -122,25 +120,3 @@ keywords:
 | 4.1               | Operational alerts                             | - Provide a mechanism to identify and send notifications about operational issues found across application and infrastructure                                   | IBM Cloud Monitoring +  IBM Cloud Logging + Event Notifications    | IBM Cloud Monitoring +  IBM Cloud Logging + Event Notifications    | - IBM Cloud Monitoring and IBM Cloud Logging support the configuration of alerts to detect operational issues and send notifications to targeted channels.  Event Notifications can be used to route the alert events to service destinations to automate response actions.                       |
 | 4.2               | Audit alerts                                   | - Provide a mechanism to identify and send notifications about issues found in audit logs                                                                       | IBM Cloud Activity Tracker + IBM Monitoring +  Event Notifications | IBM Cloud Activity Tracker + IBM Monitoring +  Event Notifications | - IBM Activity Tracker supports the configuration of alerts to detect audit issues and send notifications to targeted channels.  Event Notifications can be used to route the alert events to service destinations to automate response actions.                                                  |
 {: caption="Table 6. Service Management architecture decisions" caption-side="bottom"}
-
-# 13. References
-
--   **VPC Resiliency on IBM Cloud White Paper**
-
--   Placement Groups for VPC: <https://cloud.ibm.com/docs/vpc?topic=vpc-about-placement-groups-for-vpc>
-
--   ALB Multi-Zone Configuration:
-
-    [https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers-about&interface=api\#horizontal-scaling](https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers-about&interface=api#horizontal-scaling)
-
--   IBM Cloud SLA:
-
-    [https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en\#detail-document](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en#detail-document)
-
--   IBM Instana Monitoring Technology:
-
-    <https://www.ibm.com/docs/en/instana-observability/current?topic=overview>
-
--   IBM Storage Protect:
-
-    <https://cloud.ibm.com/catalog/content/SPonIBMCloud-20c54034-d319-48c0-beb6-0b4adc54265c-global>
