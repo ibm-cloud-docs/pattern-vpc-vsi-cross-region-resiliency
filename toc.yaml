@@ -60,8 +60,6 @@ toc:
             navtitle: Resiliency
           - topic: service-management-architecture.md
             navtitle: Service management
-          - topic: all-architecture-decisions.md
-            navtitle: All Architecture Decisions
           # - other-architecture.md
 
   - navgroup:

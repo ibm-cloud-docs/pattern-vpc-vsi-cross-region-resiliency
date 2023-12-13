@@ -13,7 +13,7 @@ keywords:
 # Service management architecture decisions
 {: #service}
 
-The following sections summarize the service management architecture decisions for resilient solutions on IBM Cloud VPC infrastructure.
+The following sections summarize the service management architecture decisions for the Web App cross-region resiliency pattern.
 
 ## Monitoring architecture decisions
 {: #monitoring}

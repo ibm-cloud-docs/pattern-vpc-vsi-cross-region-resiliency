@@ -11,7 +11,7 @@ keywords:
 ---
 
 # Storage design
-{: #compute-design}
+{: #storage-design}
 
 The Cross-Region Resiliency pattern for Web Apps includes highly available cloud storage options for the application, backup, and log data.
 

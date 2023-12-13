@@ -2,57 +2,46 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-13"
+
+keywords: # Not typically populated
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
-keywords:
+authors:
+  - name: Carol Hernandez
+    url: https://linkedin.com/in/carolbhernandez
+  - name: DoYoung Im
+  #  url: "linkedIn profile URL"
 
 # The release that the reference architecture describes
-# version: 1.0
+version: 1.0
 
 # Use if the reference architecture has deployable code.
 # Value is the URL to land the user in the IBM Cloud catalog details page for the deployable architecture.
 # See https://test.cloud.ibm.com/docs/get-coding?topic=get-coding-deploy-button
-# deployment-url: url
+deployment-url:
+
+docs: https://cloud.ibm.com/docs/pattern-vpc-vsi-cross-region-resiliency
 
 # use-case from 'code' column in
 # https://github.ibm.com/digital/taxonomy/blob/main/topics/topics_flat_list.csv
-# use-case: Virtual private cloud
+use-case: VirtualPrivateCloud
 
-# industry from 'code' column in
-# https://github.ibm.com/digital/taxonomy/blob/main/industries/industries_flat_list.csv
-# industry:
-
-# compliance from 'code' column in
-# https://github.ibm.com/digital/taxonomy/blob/main/compliance_entities/compliance_entities_flat_list.csv
-# compliance:
-
-# content-type: reference-architecture
+content-type: reference-architecture
 
 ---
 
-# Web App Cross-Region Resiliency
-{: #web-app-cross-region}
+{{site.data.keyword.attribute-definition-list}}
 
-<!--
-The following line inserts all the attribute definitions. Don't delete.
-
+# Reference architecture
 {: #title-id}
 {: toc-content-type="reference-architecture"}
-{: toc-industry="value"}
-{: toc-use-case="value"}
-{: toc-compliance="value"}
-{: toc-version="value"}
--->
+{: toc-use-case="VirtualPrivateCloud"}
+{: toc-version="1.0"}
 
-<!--
-The IDs, such as {: #title-id} are required for publishing this reference architecture in IBM Cloud Docs. Set unique IDs for each heading. Also include
-the toc attributes on the H1, repeating the values from the YAML header.
-
-:information_source: **Tip:** For more information about this template, see [Creating reference architectures](https://test.cloud.ibm.com/docs/writing?topic=writing-reference-architectures).
-
--->
+# Web App Cross-Region Resiliency
+{: #web-app-cross-region}
 
 The Web App Cross-Region Resiliency pattern deploys a 3-tier web application on VPC Virtual Servers using compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.
 
@@ -63,56 +52,6 @@ This pattern is recommended to address out-of-region disaster recovery policies 
 
 ![A diagram of a cloud server Description automatically generated](2050141b477bb83c52e6227c75d0adb0.png) [Web App Cross-Region Resiliency Solution Architecture]
 {: caption="Figure 1. A description that prints on the page" caption-side="bottom"}
-
-## Design scope
-{: #design-scope}
-
-Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro)\*, the Web App Cross-Region Resiliency pattern covers design considerations and architecture decisions for the following aspects and domains:
-
-- **Compute:** Virtual Servers
-
-- **Storage:** Primary Storage, Backup Storage
-
-- **Networking:** Enterprise Connectivity, Segmentation and Isolation, Cloud Native Connectivity, Load Balancing, DNS
-
-- **Security:** Data Security, Identity and Access Management, Application Security, Infrastructure and Endpoint Security
-
-- **Resiliency:** High Availability, Disaster Recovery, Backup and Restore,
-
-- **Service Management:** Monitoring, Logging, Auditing, Alerting
-
-<!--
- ![Enter image alt text here.](heatmap.svg "Title text that shows on hover here")
--->
-
-| Aspects            | Domains                 |                              |                            |                             |                             |                               |                           |
-|--------------------|-------------------------|------------------------------|----------------------------|-----------------------------|-----------------------------|-------------------------------|---------------------------|
-| Compute            | Bare Metal Servers      | Virtual Servers              | Virtualization             | Containers                  | Serverless                  |                               |                           |
-| Storage            | Primary Storage         | Backup                       | Archive                    | Data  Migration             |                             |                               |                           |
-| Networking         | Enterprise Connectivity | BYOIP/Edge Gateways          | Segmentation and Isolation | Cloud Native Connectivity   | Load Balancing              | CDN                           | DNS                       |
-| Security           | Data Security           | Identity & Access Management | Application Security       | Infrastructure and Endpoint | Threat Detection & Response | Governance, Risk & Compliance |                           |
-| Resiliency         | High Availability       | Disaster Recovery            | Backup and Restore         |                             |                             |                               |                           |
-| Service Management | Monitoring              | Logging                      | Auditing                   | Alerting                    | Event Management            | Automated Deployment          | Management/ Orchestration |
-| Data               | Application Integration | Data Ops                     | Data Analytics             | Data Storage                | Business Intelligence       | Artificial Intelligence       |                           |
-{: caption="Table 1. Web App Cross-Region Resiliency Solution Design Scope" caption-side="bottom"}
-
-\*The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro) for more details.
-
-## Requirements
-{: #requirements}
-
-| Aspect | Requirements |
-| -------------- | -------------- |
-| Compute            | Provide properly isolated compute resources with adequate compute capacity for the applications. |
-| Storage            | Provide storage that meets the application and database performance requirements. |
-| Networking         | Deploy workloads in isolated environment and enforce information flow policies. \n Provide secure, encrypted connectivity to the cloud’s private network for management purposes. \n Distribute incoming application requests across available compute resources. \n Support failover of application to alternate site in the event of planned or unplanned outages \n Provide public and private DNS resolution to support use of hostnames instead of IP addresses. |
-| Security           | Ensure all operator actions are executed securely through a bastion host. \n Protect the boundaries of the application against denial-of-service and application-layer attacks. \n Encrypt all application data in transit and at rest to protect from unauthorized disclosure. \n Encrypt all backup data to protect from unauthorized disclosure. \n Encrypt all security data (operational and audit logs) to protect from unauthorized disclosure. \n Encrypt all data using customer managed keys to meet regulatory compliance requirements for additional security and customer control. \n Protect secrets through their entire lifecycle and secure them using access control measures. |
-| Resiliency         | Support application availability targets and business continuity policies. \n Ensure availability of the application in the event of planned and unplanned outages. \n Provide highly available compute, storage, network, and other cloud services to handle application load and performance requirements. \n Backup application data to enable recovery in the event of unplanned outages. \n Provide highly available storage for security data (logs) and backup data. \n Automate recovery tasks to minimize down time |
-| Service Management | Monitor system and application health metrics and logs to detect issues that might impact the availability of the application. \n Generate alerts/notifications about issues that might impact the availability of applications to trigger appropriate responses to minimize down time. \n Monitor audit logs to track changes and detect potential security problems. \n Provide a mechanism to identify and send notifications about issues found in audit logs. |
-{: caption="Table 1. Pattern requirements" caption-side="bottom"}
-
-## Architecture overview
-{: #architecture-overview}
 
 -   The Web, Application, and Database tiers are deployed on VPC Virtual Server Instances (VSIs). Cloud Object Storage (COS) is used to store static web content. High performance VPC block storage (10 IOPS/GB) is used for the database tier.
 
@@ -143,6 +82,40 @@ Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-f
 -   A VPC VPN Client in the Management VPC in each region provides operational access to resources within the IBM Cloud private network.
 
 -   A bastion host in the Management VPC in each region is used to provide remote access to the infrastructure and application for management purposes and to record all access and opertions performed by remote users for audit purposes.
+
+## Design scope
+{: #design-scope}
+
+Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro)\*, the Web App Cross-Region Resiliency pattern covers design considerations and architecture decisions for the following aspects and domains:
+
+- **Compute:** Virtual Servers
+
+- **Storage:** Primary Storage, Backup Storage
+
+- **Networking:** Enterprise Connectivity, Segmentation and Isolation, Cloud Native Connectivity, Load Balancing, DNS
+
+- **Security:** Data Security, Identity and Access Management, Application Security, Infrastructure and Endpoint Security
+
+- **Resiliency:** High Availability, Disaster Recovery, Backup and Restore,
+
+- **Service Management:** Monitoring, Logging, Auditing, Alerting
+
+ ![Web App Cross-Region Resiliency Solution Design Scope](heatmap-vpc-cross-region.svg){: caption="Figure 1. Web App Cross-Region Resiliency Solution Design Scope" caption-side="bottom"}
+
+\*The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro) for more details.
+
+## Requirements
+{: #requirements}
+
+| Aspect | Requirements |
+| -------------- | -------------- |
+| Compute            | Provide properly isolated compute resources with adequate compute capacity for the applications. |
+| Storage            | Provide storage that meets the application and database performance requirements. |
+| Networking         | Deploy workloads in isolated environment and enforce information flow policies. \n Provide secure, encrypted connectivity to the cloud’s private network for management purposes. \n Distribute incoming application requests across available compute resources. \n Support failover of application to alternate site in the event of planned or unplanned outages \n Provide public and private DNS resolution to support use of hostnames instead of IP addresses. |
+| Security           | Ensure all operator actions are executed securely through a bastion host. \n Protect the boundaries of the application against denial-of-service and application-layer attacks. \n Encrypt all application data in transit and at rest to protect from unauthorized disclosure. \n Encrypt all backup data to protect from unauthorized disclosure. \n Encrypt all security data (operational and audit logs) to protect from unauthorized disclosure. \n Encrypt all data using customer managed keys to meet regulatory compliance requirements for additional security and customer control. \n Protect secrets through their entire lifecycle and secure them using access control measures. |
+| Resiliency         | Support application availability targets and business continuity policies. \n Ensure availability of the application in the event of planned and unplanned outages. \n Provide highly available compute, storage, network, and other cloud services to handle application load and performance requirements. \n Backup application data to enable recovery in the event of unplanned outages. \n Provide highly available storage for security data (logs) and backup data. \n Automate recovery tasks to minimize down time |
+| Service Management | Monitor system and application health metrics and logs to detect issues that might impact the availability of the application. \n Generate alerts/notifications about issues that might impact the availability of applications to trigger appropriate responses to minimize down time. \n Monitor audit logs to track changes and detect potential security problems. \n Provide a mechanism to identify and send notifications about issues found in audit logs. |
+{: caption="Table 1. Pattern requirements" caption-side="bottom"}
 
 ## Components
 {: #components}

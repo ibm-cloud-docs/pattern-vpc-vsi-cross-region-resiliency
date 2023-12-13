@@ -13,12 +13,12 @@ keywords:
 # Networking architecture decisions
 {: #networking-architecture}
 
-Let's write a short description...
+The following tables summarize the networking architecture decisions for the Web App cross-region resiliency pattern.
 
 ## Enterprise connectivity architecture decisions
 {: #enterprise-connectivity}
 
-And, then let's introduce the table. Something like: "The following are enterprise connectivity architecture decisions for this design."
+The following are enterprise connectivity architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
@@ -28,7 +28,7 @@ And, then let's introduce the table. Something like: "The following are enterpri
 ## Network segmentation and isolation architecture decisions
 {: #network-segmentation-isolation}
 
-Intro text...
+The following are network segmentation and isolation architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
@@ -38,7 +38,7 @@ Intro text...
 ## Cloud native connectivity architecture decisions
 {: #cloud-native-connectivity}
 
-Intro text...
+The following are cloud native connectivity architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
@@ -49,7 +49,7 @@ Intro text...
 ## Load balancing architecture decisions
 {: #network-segmentation-isolation}
 
-Intro text...
+The following are load balancing architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
@@ -60,7 +60,7 @@ Intro text...
 ## Domain name system architecture decisions
 {: #dns}
 
-Intro text...
+The following are domain name system architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
