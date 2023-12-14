@@ -51,15 +51,13 @@ The web app cross-region resiliency architecture deploys a 3-tier web applicatio
 The Web, Application, and Database tiers are deployed on Virtual Servers for VPC (VSIs) within the Workload Virtual Private Cloud (VPC).
 - The virtual servers in the Web and App tiers are placed within [Placement Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling.
 - A [VPC Application Load Balancer](https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers) is used at the web and app tiers to route traffic to healthy application instances.
-- IBM Storage Protect is used to create database backups to enable data recovery.
+- IBM Storage Protect is used to create database backups to enable data recovery. \n \n
 
-\n \n
 The Web Application is deployed across two regions using an active-standby approach to enable failover in the event of an outage of the primary region.
 - The Web and App tiers are deployed across two availability zones in the primary region and the second region.
 - The Database tier is deployed in active-standby across two availability zones in the primary region with another standby replica in one availability zone in the second region. Data replication is handled by the database software based on HA/DR configuration settings.
-- The [Cloud Internet Services (CIS)](https://cloud.ibm.com/docs/cis?topic=cis-getting-started) is configured as a Global Load Balancer to route traffic to the appropriate region.
+- The [Cloud Internet Services (CIS)](https://cloud.ibm.com/docs/cis?topic=cis-getting-started) is configured as a Global Load Balancer to route traffic to the appropriate region. \n \n
 
-\n \n
 All data is encrypted using customer-provided keys managed by [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-about).
 - All storage is encrypted at rest using storage encryption with customer-provided keys managed by Key Protect. Key Protect is provisioned in the primary region and configured with failover units in the second region.
 - Data is encrypted in transit using TLS encryption. A [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager) instance is deployed in each region to store and manage SSL/TLS certificates.
