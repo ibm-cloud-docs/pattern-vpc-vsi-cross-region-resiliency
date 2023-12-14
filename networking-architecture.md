@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -53,8 +53,8 @@ The following are load balancing architecture decisions for this design.
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| Application Load Balancer | Route web user http/https requests | * VPC ALB \n * VPC NLB | VPC ALB | * VPC ALB is recommended for web-based workloads. \n * Provides layer 4 and layer 7 load balancing \n * Supports HTTP, HTTPS, and TCP requests \n * Supports SSL offloading. |
-| Local Load Balancing: App & DB Tiers | Distribute requests across zones for high availability | * Public VPC ALB \n * Private VPC ALB \n * Public VPC NLB \n * Private VPC NLB | Private ALB | The Private VPC ALB distributes traffic among virtual servers within the app and DB tiers. The VPC ALB is configured with subnets across multiple zones for multi-zone availability. |
+| Application Load Balancer | Route web user http/https requests | * VPC ALB \n * VPC NLB | VPC ALB | VPC ALB is recommended for web-based workloads. \n * Provides layer 4 and layer 7 load balancing \n * Supports HTTP, HTTPS, and TCP requests \n * Supports SSL offloading. |
+| Local Load Balancing: App & DB Tiers | Distribute requests across zones for high availability | * Public VPC ALB \n * Private VPC ALB \n * Public VPC NLB \n * Private VPC NLB | Private ALB | The Private VPC ALB distributes traffic among virtual servers within the app and DB tiers. \n The VPC ALB is configured with subnets across multiple zones for multi-zone availability. |
 {: caption="Table 4. Load balancing architecture decisions" caption-side="bottom"}
 
 ## Domain name system architecture decisions

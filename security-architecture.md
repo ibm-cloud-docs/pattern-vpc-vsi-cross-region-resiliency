@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 

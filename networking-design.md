@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-12"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -13,7 +13,7 @@ keywords:
 # Networking design
 {: #networking-design}
 
-The Cross-Region Resiliency pattern for Web Apps leverages IBM Cloud Virtual Private Cloud infrastructure and network services to segment the application tiers and support the application deployment across multiple availability zones in two regions.
+The web app cross-region resiliency pattern leverages IBM Cloud Virtual Private Cloud infrastructure and network services to segment the application tiers and support the application deployment across multiple availability zones in two regions.
 
 -   Deploy the Web App within a Virtual Private Cloud (VPC) provisioned across multiple availability zones within a region to provide workload isolation within the public cloud. Place each Web App tier in a separate subnet in each availability zone. Use security groups and ACLs as firewalls to limit access to virtual server instances for operational purposes and to control network traffic to each web app tier.
 

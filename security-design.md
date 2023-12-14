@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-12"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -13,7 +13,7 @@ keywords:
 # Security design
 {: #security-design}
 
-The Cross-Region Resiliency pattern for Web Apps leverages IBM Cloud Data Protection Services to protect all application data, including configuration and meta data, as well as all security data, including logs and credentials to access application or cloud resources, from unauthorized disclosure, as follows:
+The web app cross-region resiliency pattern leverages IBM Cloud Data Protection Services to protect all application data, including configuration and meta data, as well as all security data, including logs and credentials to access application or cloud resources, from unauthorized disclosure, as follows:
 
 -   Application, Databases, backup, and log data are encrypted at rest using storage encryption with customer managed keys through the integration of VPC Block and Cloud Object Storage services with [IBM Cloud Key Management Services (KMS)](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-mng-data&interface=ui#about-encryption).
 

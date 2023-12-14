@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -13,9 +13,9 @@ keywords:
 # Compute design
 {: #compute-design}
 
-The Cross-Region Resiliency pattern for Web Apps includes compute options that are highly available, properly isolated, provide adequate capacity for the applications, and can handle increased workload demands.
+The web app cross-region resiliency pattern uses compute options that are highly available, properly isolated, provide adequate capacity for the applications, and can handle increased workload demands.
 
-Provision VPC Virtual Servers for the web tier, application tier, and database tier as follows:
+The Virtual Servers for the web tier, application tier, and database tier are provisioned as follows:
 
 -   **VPC Virtual Server Profile**: select compute and memory profiles for each tier, based on tier capacity and performance requirements.
 

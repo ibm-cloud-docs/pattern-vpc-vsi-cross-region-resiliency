@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-12"
+lastupdated: "2023-12-13"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -29,7 +29,7 @@ The following sections summarize the service management architecture decisions f
 
 | Architecture Decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| Operational Monitoring of Cloud infrastructure and services | - Monitor system and app health to determine need to failover to alternate site. Operational metrics include CPU and memory usage, API response times, etc. | - IBM Cloud Monitoring \n - BYO Monitoring Tool | IBM Cloud Monitoring | - IBM Cloud Monitoring collects and monitors operational metrics for cloud infrastructure as well as cloud platform and services and provides a single view for all metrics |
+| Operational Monitoring of Cloud infrastructure and services | Monitor system and app health to determine need to failover to alternate site. Operational metrics include CPU and memory usage, API response times, etc. | - IBM Cloud Monitoring \n - BYO Monitoring Tool | IBM Cloud Monitoring | IBM Cloud Monitoring collects and monitors operational metrics for cloud infrastructure as well as cloud platform and services and provides a single view for all metrics |
 | Operational Monitoring of Applications | | - IBM Cloud Monitoring \n - Instana (SaaS) \n - BYO Monitoring Tool | IBM Cloud Monitoring + Instana (SaaS) | Use Instana along with IBM Cloud Monitoring to get additional application performance metrics and automate application performance management. Instana provides data and actionable insights to monitor the applications and automate root-cause analysis. |
 {: caption="Table 6. Logging architecture decisions" caption-side="bottom"}
 

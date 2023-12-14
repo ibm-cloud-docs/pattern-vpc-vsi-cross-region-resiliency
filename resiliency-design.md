@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-12"
+lastupdated: "2023-12-13"
 
 subcollection: whitepaper-vpc-resiliency
 
@@ -16,7 +16,7 @@ keywords:
 ## High availability Design
 {: #high-availability-design}
 
-The Cross-Region Resiliency pattern for Web Apps deploys the 3-tier web architecture in two regions following the multi-zone, multi-region deployment described in **“VPC Resiliency on IBM Cloud”.**
+The web app cross-region resiliency pattern deploys a 3-tier web architecture in two regions following the multi-zone, multi-region deployment described in **“VPC Resiliency on IBM Cloud”.**
 
 The web tier and application tier are deployed in two availability zones within each region. Each tier is deployed across VPC Virtual Server Instances (VSIs) in a VPC Instance Group for Autoscaling. A public VPC Application Load Balancer (ALB) routes web requests to healthy virtual instances in the app tier. A private VPC ALB routes traffic to healthy virtual servers in the app tier.
 
@@ -30,16 +30,16 @@ High availability at the database tier is typically achieved with an active-stan
 
 -   a mechanism to failover from the primary database to the standby replica and back
 
-In the Cross-Region Resiliency pattern for Web Apps, the database tier is deployed on Virtual Server Instances across two availability zones in the primary region following an active-standby architecture. Data is replicated to the standby copy in the same region by the database software using database specific replication and failover configuration options. A second standby database replica is configured in the DR region. Data is replicated asynchronously to the DR region by the database software using database specific HA/DR options.
+In the web app cross-region resiliency pattern, the database tier is deployed on Virtual Server Instances across two availability zones in the primary region following an active-standby architecture. Data is replicated to the standby copy in the same region by the database software using database specific replication and failover configuration options. A second standby database replica is configured in the DR region. Data is replicated asynchronously to the DR region by the database software using database specific HA/DR options.
 
 Note that this database deployment architecture is subject to the 99.9% IBM Cloud infrastructure [SLA](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en#detail-document) for a region. For 99.99% infrastructure SLA within the region, the database must be deployed on virtual servers across three availability zones within the region and use clustering and replication configurations which will be database specific and are beyond the scope of this document.
 
 An alternative to deploying the database in VPC Virtual Server Instances is to use [IBM Cloud Databases](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-about) instances in a multi-zone region (MZR). IBM Cloud Databases provides highly available and scalable managed SQL and no-SQL databases with 99.99% SLA and low operational cost. Provision an instance of the [IBM Cloud Databases](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-about) in the primary region and configure database replicas to asynchronously replicate data to the DR region. See how to configure read-only replicas in a different region for [IBM Cloud Databases for MySQL](https://cloud.ibm.com/docs/databases-for-mysql?topic=databases-for-mysql-read-replicas), [IBM Cloud Databases for PostgreSQL](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) , and [IBM Cloud Databases for EnterpriseDB](https://cloud.ibm.com/docs/databases-for-enterprisedb?topic=databases-for-enterprisedb-read-only-replicas&interface=ui).
 
-## Backup and Restore design
+## Backup and restore design
 {: #backup-design}
 
-The Cross-Region Resiliency pattern for Web Apps uses backup and restore to protect database contents from accidental deletion or corruption and provide short term storage for historical data.
+The web app cross-region resiliency pattern uses backup and restore to protect database contents from accidental deletion or corruption and provide short term storage for historical data.
 
 Do the following to create transaction consistent database backups that can be quickly restored in the same region where the Web Application is deployed:
 
@@ -54,10 +54,10 @@ Store database backups in [cross-region Cloud Object Storage](https://cloud.ibm.
 Note that Web, App, or Database server backups are not needed since the entire Web Application is deployed in standby in the DR region and database contents are replicated asynchronously to the DR site as specified in the [High Availability Design](#91-high-availability-design) and [Disaster Recovery Design](#_Disaster_Recovery_Design) sections.
 {: caption="Table 2. High availability deployment options" caption-side="bottom"}
 
-## Disaster Recovery design
+## Disaster recovery design
 {: #dr-design}
 
-The Cross-Region Resiliency pattern for Web Apps deploys the 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in **“VPC Resiliency on IBM Cloud”**, is used to support Web Applications with RPO\<=15 mins and RTO\<=1 hour requirements.
+The web app cross-region resiliency pattern deploys a 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in **“VPC Resiliency on IBM Cloud”**, is used to support Web Applications with RPO\<=15 mins and RTO\<=1 hour requirements.
 
 The web, app, and database tiers are deployed in each region as specified in the [High Availability Design section](#91-high-availability-design). The Cloud Internet Service is configured as a Global Load Balancer with health checks to monitor the availability of the Web Application and route traffic to the DR region when needed.
 

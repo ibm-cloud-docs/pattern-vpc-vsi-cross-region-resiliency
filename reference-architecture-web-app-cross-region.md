@@ -34,56 +34,40 @@ content-type: reference-architecture
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Web App Cross-Region Resiliency
+# Web app cross-region resiliency
 {: #web-app-cross-region}
 {: toc-content-type="reference-architecture"}
 {: toc-use-case="VirtualPrivateCloud"}
 {: toc-version="1.0"}
 
-The Web App Cross-Region Resiliency pattern deploys a 3-tier web application on VPC Virtual Servers using compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.
-
-This pattern is recommended to address out-of-region disaster recovery policies or business continuity policies with geo or distance compliance requirements. It supports recovery point objective (RPO)\<=15 mins and recovery time objective (RTO)\<=1 hour requirements.
+The web app cross-region resiliency architecture deploys a 3-tier web application on Virtual Servers for VPC using compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.
 
 ## Architecture diagram
 {: #architecture-diagram}
 
 ![A diagram of a cloud server Description automatically generated](2050141b477bb83c52e6227c75d0adb0.png) [Web App Cross-Region Resiliency Solution Architecture]
-{: caption="Figure 1. A description that prints on the page" caption-side="bottom"}
+{: caption="Figure 1. Web App Cross-Region Resiliency Solution Architecture" caption-side="bottom"}
 
--   The Web, Application, and Database tiers are deployed on VPC Virtual Server Instances (VSIs). Cloud Object Storage (COS) is used to store static web content. High performance VPC block storage (10 IOPS/GB) is used for the database tier.
+The Web, Application, and Database tiers are deployed on Virtual Servers for VPC (VSIs) within the Workload Virtual Private Cloud (VPC).
+- The virtual servers in the Web and App tiers are placed within [Placement Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling.
+- A [VPC Application Load Balancer](https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers) is used at the web and app tiers to route traffic to healthy application instances.
+- IBM Storage Protect is used to create database backups to enable data recovery.
 
--   The virtual servers in the Web and App tiers are placed within [Placement Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](https://cloud.ibm.com/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling. A VPC Application Load Balancer (ALB) is used at the web and app tiers tier to route traffic to healthy application instances.
+\n \n
+The Web Application is deployed across two regions using an active-standby approach to enable failover in the event of an outage of the primary region.
+- The Web and App tiers are deployed across two availability zones in the primary region and the second region.
+- The Database tier is deployed in active-standby across two availability zones in the primary region with another standby replica in one availability zone in the second region. Data replication is handled by the database software based on HA/DR configuration settings.
+- The [Cloud Internet Services (CIS)](https://cloud.ibm.com/docs/cis?topic=cis-getting-started) is configured as a Global Load Balancer to route traffic to the appropriate region.
 
--   The Web, Application, and Database tiers are deployed within the Workload Virtual Private Cloud (VPC). Management tools, such as backup tools, are deployed in the Management VPC. A local Transit Gateway allows traffic between the management and workload VPCs.
-
--   Virtual servers for each tier are placed in separate subnets within each availability zone. Security groups and ACLs are used as firewalls to limit access to virtual server instances for operational purposes and control network traffic to each web app tier.
-
--   The Cloud Internet Service is deployed as a proxy to the public VPC Application Load Balancer that front ends the web tier to provide Distributed Denial of Service (DDoS) protection and Web Application Firewall protection to the web servers exposed to the internet.
-
--   The Web Application is deployed across two regions using an active-standby approach to enable failover in the event of an outage of the primary region. A Global Transit Gateway connects VPCs across the two regions.
-
--   The Web and App tiers are deployed across two availability zones in the primary region and the DR region.
-
--   The Database tier is deployed in active-standby across two availability zones in the primary region with another standby replica in one availability zone in the DR region. Data replication is handled by the database software based on HA/DR configuration settings.
-
--   The Cloud Internet Service is configured as a Global Load Balancer to route traffic to the appropriate region.
-
--   All data is encrypted using customer-provided keys managed by Key Protect. All storage is encrypted at rest using storage encryption with customer-provided keys managed by Key Protect. Key Protect is provisioned in the primary region and configured with failover units in the second region.
-
--   Data is encrypted in transit using TLS encryption. A Secrets Manager instance is deployed in each region to store and manage SSL/TLS certificates.
-
--   IBM Storage Protect is used to create database backups to enable data recovery.
-
--   IBM Monitoring, IBM Logging, and Activity Tracker instances are deployed in each region. IBM Monitoring is used to check the health of the servers and storage as well as the health of the web application. IBM Logging is used to get logs from the servers, storage, and web application. Monitoring and Logging data is stored in Cloud Object Storage based on the selected retention period. Activity Tracker stores audit logs in Cloud Object Storage. Logs stored in COS are encrypted at rest using COS encryption with customer-provided keys.
-
--   A VPC VPN Client in the Management VPC in each region provides operational access to resources within the IBM Cloud private network.
-
--   A bastion host in the Management VPC in each region is used to provide remote access to the infrastructure and application for management purposes and to record all access and opertions performed by remote users for audit purposes.
+\n \n
+All data is encrypted using customer-provided keys managed by [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-about).
+- All storage is encrypted at rest using storage encryption with customer-provided keys managed by Key Protect. Key Protect is provisioned in the primary region and configured with failover units in the second region.
+- Data is encrypted in transit using TLS encryption. A [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager) instance is deployed in each region to store and manage SSL/TLS certificates.
 
 ## Design scope
 {: #design-scope}
 
-Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro)\*, the Web App Cross-Region Resiliency pattern covers design considerations and architecture decisions for the following aspects and domains:
+Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro)\*, the Web app cross-region resiliency architecture covers design considerations and architecture decisions for the following aspects and domains:
 
 - **Compute:** Virtual Servers
 
@@ -97,14 +81,14 @@ Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-f
 
 - **Service Management:** Monitoring, Logging, Auditing, Alerting
 
- ![Web App Cross-Region Resiliency Solution Design Scope](heat-map-vpc-cross-region.svg){: caption="Figure 1. Web App Cross-Region Resiliency Solution Design Scope" caption-side="bottom"}
+ ![Web App Cross-Region Resiliency Solution Design Scope](heat-map-vpc-cross-region.svg){: caption="Figure 1. Web App Cross-Region Resiliency Architecture Design Scope" caption-side="bottom"}
 
 \*The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](https://cloud.ibm.com/docs/architecture-framework?topic=architecture-framework-intro) for more details.
 
 ## Requirements
 {: #requirements}
 
-| Aspect | Requirements |
+| Aspects | Requirements |
 | -------------- | -------------- |
 | Compute            | Provide properly isolated compute resources with adequate compute capacity for the applications. |
 | Storage            | Provide storage that meets the application and database performance requirements. |
@@ -112,16 +96,16 @@ Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-f
 | Security           | Ensure all operator actions are executed securely through a bastion host. \n Protect the boundaries of the application against denial-of-service and application-layer attacks. \n Encrypt all application data in transit and at rest to protect from unauthorized disclosure. \n Encrypt all backup data to protect from unauthorized disclosure. \n Encrypt all security data (operational and audit logs) to protect from unauthorized disclosure. \n Encrypt all data using customer managed keys to meet regulatory compliance requirements for additional security and customer control. \n Protect secrets through their entire lifecycle and secure them using access control measures. |
 | Resiliency         | Support application availability targets and business continuity policies. \n Ensure availability of the application in the event of planned and unplanned outages. \n Provide highly available compute, storage, network, and other cloud services to handle application load and performance requirements. \n Backup application data to enable recovery in the event of unplanned outages. \n Provide highly available storage for security data (logs) and backup data. \n Automate recovery tasks to minimize down time |
 | Service Management | Monitor system and application health metrics and logs to detect issues that might impact the availability of the application. \n Generate alerts/notifications about issues that might impact the availability of applications to trigger appropriate responses to minimize down time. \n Monitor audit logs to track changes and detect potential security problems. \n Provide a mechanism to identify and send notifications about issues found in audit logs. |
-{: caption="Table 1. Pattern requirements" caption-side="bottom"}
+{: caption="Table 1. Web app cross-region resiliency requirements" caption-side="bottom"}
 
 ## Components
 {: #components}
 
-| Aspect | Solution Component | How the component is used |
+| Aspects | Solution Components | How the component is used |
 | -------------- | -------------- | -------------- |
-| Compute            | [VPC VSIs](https://cloud.ibm.com/vpc-ext/provision/vs)                                                                                                                                                                   | Web, App, and database servers                                                                                                        |
-| Storage            | [VPC Block Storage](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-block)                                                                                                                                      | Database servers storage                                                                                                              |
-|                    | [Cloud Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage) (COS)                                                                                      | Web app static content, backups, logs (application, operational and audit logs)                                                       |
+| Compute            | [Virtual Servers for VPC](https://cloud.ibm.com/vpc-ext/provision/vs)                                                                                                                                                                   | Web, App, and database servers                                                                                                        |
+| Storage            | [Block Storage for VPC](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-block)                                                                                                                                      | Database servers storage                                                                                                              |
+|                    | [Object Storage (COS)](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)                                                                                      | Web app static content, backups, logs (application, operational and audit logs)                                                       |
 | Networking         | [VPC Virtual Private Network (VPN) Client](https://cloud.ibm.com/docs/iaas-vpn?topic=iaas-vpn-getting-started)                                                                                                           | Remote access to manage resources in private network                                                                                  |
 |                    | [Virtual Private Clouds (VPCs), Subnets, Security Groups (SGs), ACLs](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started)                                                                                          | VPCs for workload isolation Subnets, SGs, and ACLs for restricted access to web, app, and database tiers                              |
 |                    | [Transit Gateway (TGW)](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-getting-started)                                                                                                                | Local Transit Gateway connects the Workload and Management VPCs within a region. \n Global Transit Gateway connects VPCs across regions. |
@@ -142,4 +126,4 @@ Following the [Architecture Framework](https://cloud.ibm.com/docs/architecture-f
 | Service Management | [IBM Cloud Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-about-monitor)                                                                                                                             | Apps and operational monitoring.                                                                                                      |
 |                    | [IBM Log Analysis](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-getting-started)                                                                                                                           | Apps and operational logs                                                                                                             |
 |                    | [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started)                                                                                                         | Audit logs                                                                                                                            |
-{: caption="Table 2. Cross-Region Resiliency for Web Apps Solution Components" caption-side="bottom"}
+{: caption="Table 2. Web app cross-region resiliency components" caption-side="bottom"}
