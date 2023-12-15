@@ -62,7 +62,7 @@ All data is encrypted using customer-provided keys that are managed by [Key Prot
 ## Design scope
 {: #design-scope}
 
-Following the [Architecture Framework](/docs/architecture-framework?topic=architecture-framework-intro)\*, the web app cross-region resiliency architecture covers design considerations and architecture decisions for the following aspects and domains:
+Following the [Architecture Framework](/docs/architecture-framework?topic=architecture-framework-intro), the web app cross-region resiliency architecture covers design considerations and architecture decisions for the following aspects and domains:
 
 - **Compute:** Virtual Servers
 
@@ -78,7 +78,7 @@ Following the [Architecture Framework](/docs/architecture-framework?topic=archit
 
  ![Web App Cross-Region Resiliency Solution Design Scope](heat-map-vpc-cross-region.svg){: caption="Figure 2. Web App Cross-Region Resiliency Architecture Design Scope" caption-side="bottom"}
 
-\*The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](/docs/architecture-framework?topic=architecture-framework-intro) for more details.
+The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](/docs/architecture-framework?topic=architecture-framework-intro) for more details.
 
 ## Requirements
 {: #requirements}
