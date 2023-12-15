@@ -10,7 +10,7 @@ keywords:
 
 ---
 
-# Resiliency architecture decisions
+# Architecture decisions for resiliency
 {: #resiliency-architecture}
 
 The following sections summarize the resiliency architecture decisions for workloads deployed on IBM Cloud VPC infrastructure.
@@ -40,7 +40,7 @@ The following sections summarize the resiliency architecture decisions for workl
 ## Architecture decisions for disaster recovery 
 {: #disaster recovery}
 
-| Architecture Decision | Requirement | Alternative | Decision | Rationale |
+| Architecture decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | DR Approach   | * Ensure availability of resources if unplanned outages occur \n * Establish alternative site for failover of workloads if failure occurs in the primary site \n * Support business targets for RPO/RTO \n * Support Business Continuity and Disaster Recovery plans | * Active-Active \n * Active-Standby / Hot DR Site \n * Active-Standby / Warm DR Site \n * Backup & Restore (Cold DR Site)   | Active-Active | Recommended approach for mission-critical applications with continuous availability requirements and near zero RPO/RTO |
 | | | | Active-Standby / Hot DR Site | Recommended approach for core business applications with \n  * High availability requirements \n  * RPO \< 15 mins \n * RTO \< 1 hour |

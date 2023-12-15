@@ -15,7 +15,7 @@ keywords:
 
 The web app cross-region resiliency pattern uses IBM Cloud services to monitor the health of all the components of the solution, including infrastructure, cloud services, and application as well as operational logs, to detect and correct issues that might affect the availability of the Web Application.
 
-## Monitoring Design
+## Monitoring design
 {: #smonitoring-design}
 
 Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web App and cloud environment and enable a timely response to incidents, as follows:
@@ -36,7 +36,7 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 
 - Backup historical metrics that might be needed for auditing purposes by querying and copying the data to cross-regional Cloud Object Storage buckets that can be accessed from another region if a disaster occurs.
 
-## Logging Design
+## Logging design
 {: #logging-design}
 
 Use IBM Log Analysis to monitor operational logs for applications, platform resources, and infrastructure as follows:
@@ -53,7 +53,7 @@ Use IBM Log Analysis to monitor operational logs for applications, platform reso
 
 - Copy logs to IBM Cloud Object Storage to support \>30 days data search or data retention policy requirements. See [Configuring Archiving Logs to Cloud Object Storage](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-archiving-ov) for details.
 
-## Auditing Design
+## Auditing design
 {: #auditing-design}
 
 Use [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started) to capture and monitor audit logs for Web Applications that are deployed on VPC Virtual Servers, as follows:
@@ -70,7 +70,7 @@ Use [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?top
 
 - Copy audit logs to IBM Cloud Object Storage to support \>30 days data search or data retention policy requirements. See [Configuring Archiving Logs to Cloud Object Storage](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-archiving-ov) for details.
 
-## Alerting Design
+## Alerting design
 {: #alerting-design}
 
 It is important to factor in incident detection, notification, escalation, discovery, and declaration to provide realistic, achievable objectives that provide business value. Use [IBM Cloud Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-en-about) to route events associated with IBM Cloud resources (event sources) to a destination (delivery target for a notification) to trigger actions and enable automated response to issues impacting the availability of Web Applications, as follows:

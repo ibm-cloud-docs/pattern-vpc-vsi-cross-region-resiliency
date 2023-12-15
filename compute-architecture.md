@@ -12,7 +12,7 @@ keywords:
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Compute architecture decisions
+# Architecture decisions for compute
 {: #compute-architecture}
 
 The following are computer architecture decisions for the Web App cross-region resiliency pattern.

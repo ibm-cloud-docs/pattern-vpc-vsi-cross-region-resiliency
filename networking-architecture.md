@@ -10,7 +10,7 @@ keywords:
 
 ---
 
-# Networking architecture decisions
+# Architecture decisions for networking
 {: #networking-architecture}
 
 The following tables summarize the networking architecture decisions for the Web App cross-region resiliency pattern.

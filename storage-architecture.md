@@ -10,7 +10,7 @@ keywords:
 
 ---
 
-# Storage architecture decisions
+# Architecture decisions for storage
 {: #storage-architecture}
 
 The following are storage architecture decisions for the Web App cross-region resiliency pattern.
