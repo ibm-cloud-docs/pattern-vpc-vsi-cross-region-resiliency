@@ -43,7 +43,7 @@ The web app cross-region resiliency architecture deploys a 3-tier web applicatio
 ## Architecture diagram
 {: #architecture-diagram}
 
-![A diagram of a cloud server](2050141b477bb83c52e6227c75d0adb0.png)[Web App Cross-Region Resiliency Solution Architecture]{: caption="Figure 1. Web App Cross-Region Resiliency Solution Architecture" caption-side="bottom"}
+![Web App Cross-Region Resiliency Solution Architecture](2050141b477bb83c52e6227c75d0adb0.png){: caption="Figure 1. Web App Cross-Region Resiliency Solution Architecture" caption-side="bottom"}
 
 The Web, Application, and Database tiers are deployed on Virtual Servers for VPC (VSIs) within the Workload Virtual Private Cloud (VPC).
 - The virtual servers in the web and app tiers are placed within [Placement Groups](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling.
