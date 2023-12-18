@@ -16,7 +16,7 @@ keywords:
 ## High availability design
 {: #high-availability-design}
 
-The web app cross-region resiliency pattern deploys a 3-tier web architecture in two regions following the multi-zone, multi-region deployment described in [VPC Resiliency on IBM Cloud](/docs/vpc-resiliency).
+The web app cross-region resiliency pattern deploys a 3-tier web architecture in two regions following the multi-zone, multi-region deployment described in [IBM Cloud VPC resiliency](/docs/vpc-resiliency).
 
 The web tier and application tier are deployed in two availability zones within each region. Each tier is deployed across VPC Virtual Server Instances (VSIs) in a VPC Instance Group for Autoscaling. A public VPC Application Load Balancer (ALB) routes web requests to healthy virtual instances in the app tier. A private VPC ALB routes traffic to healthy virtual servers in the app tier.
 
@@ -49,12 +49,12 @@ Do the following to create transaction-consistent database backups that can be q
 
 Store database backups in [cross-region Cloud Object Storage](/docs/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints-geo) to enable recovery of historical data in the DR site if a regional outage occurs.
 
-Note that web, app, or database server backups are not needed since the entire web application is deployed in standby in the DR region and database contents are replicated asynchronously to the DR site as specified in the [High availability design](#91-high-availability-design) and [Disaster recovery design](#_Disaster_Recovery_Design) sections.
+Web, app, or database server backups are not needed since the entire web application is deployed in standby in the DR region and database contents are replicated asynchronously to the DR site as specified in the [High availability design](#91-high-availability-design) and [Disaster recovery design](#_Disaster_Recovery_Design) sections.
 
 ## Disaster recovery design
 {: #dr-design}
 
-The web app cross-region resiliency pattern deploys a 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in [VPC Resiliency on IBM Cloud](/docs/vpc-resiliency), is used to support web applications with RPO\<=15 mins and RTO\<=1-hour requirements.
+The web app cross-region resiliency pattern deploys a 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in [IBM Cloud VPC resiliency](/docs/vpc-resiliency), is used to support web applications with RPO\<=15 mins and RTO\<=1-hour requirements.
 
 The web, app, and database tiers are deployed in each region as specified in the [High availability design section](#91-high-availability-design). The Cloud Internet Service is configured as a global load balancer with health checks to monitor the availability of the web application and route traffic to the DR region when needed.
 

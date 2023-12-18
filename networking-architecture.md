@@ -32,7 +32,7 @@ The following are network segmentation and isolation architecture decisions for 
 
 | Architecture decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| Web App Deployment | * Deploy workloads in an isolated environment and enforce information flow policies. \n * Provide isolated security zones between app tiers	- Virtual Private Clouds (VPCs) | * Virtual Private Clouds (VPCs) \n * Subnets \n * Security Groups (SGs) \n * ACLs | VPCs, subnets, Security Groups (SGs) and ACLs | VPCs provide secure, virtual networks for web apps that are logically isolated from other public cloud tenants. \n \n Subnets provide a range of private IP addresses for each web app tier within a zone. \n \n Security Groups and ACLs are used as firewalls to limit access to virtual servers and web app tiers. |
+| Web App Deployment | * Deploy workloads in an isolated environment and enforce information flow policies. \n * Provide isolated security zones between app tiers | * Virtual Private Clouds (VPCs) \n * Subnets \n * Security Groups (SGs) \n * ACLs | VPCs, subnets, Security Groups (SGs) and ACLs | VPCs provide secure, virtual networks for web apps that are logically isolated from other public cloud tenants. \n \n Subnets provide a range of private IP addresses for each web app tier within a zone. \n \n Security Groups and ACLs are used as firewalls to limit access to virtual servers and web app tiers. |
 {: caption="Table 2. Architecture decisions for network segmentation and isolation" caption-side="bottom"}
 
 ## Architecture decisions for cloud native connectivity

@@ -4,7 +4,7 @@ copyright:
   years: 2023
 lastupdated: "2023-12-18"
 
-subcollection: whitepaper-vpc-resiliency
+subcollection: pattern-vpc-vsi-cross-region-resiliency
 
 keywords:
 
@@ -19,7 +19,6 @@ The web app cross-region resiliency pattern uses IBM Cloud services to monitor t
 {: #smonitoring-design}
 
 Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web App and cloud environment and enable a timely response to incidents, as follows:
-
 - Provision one IBM Cloud Monitoring instance in each region where the application is deployed to collect and monitor platform metrics for Cloud Services that are provisioned in that region. See [Configuring Platform Metrics](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started#getting-started-step3-1) for details.
 
 - Install and configure monitoring agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. The monitoring agent collects the following metrics by default: system host, file, file system, process, and network metrics. See [Monitoring Infrastructure](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started#getting-started-step3-2) for details. IBM Cloud Monitoring also supports monitoring of application platform metrics through Prometheus exporters or custom metrics. See [Monitoring Features](https://cloud.ibm.com/docs/monitoring?topic=monitoring-features) for more details.
@@ -31,7 +30,6 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 - Define alerts for the conditions that you need to monitor and configure notification channels to trigger the appropriate actions and automate incident responses. For example, you can configure a webhook notification to integrate IBM Cloud Monitoring with Service Now.
 
 - Configure notification channels to inform operation and support teams when an alert is triggered to support incident response processes.
-
     - Consider configuring streaming to forward selected metrics for further data processing, analysis or to trigger an automated response based on specific values. See [Streaming Data](https://cloud.ibm.com/docs/monitoring?topic=monitoring-data_streaming#data_streaming_ui) for details.
 
 - Backup historical metrics that might be needed for auditing purposes by querying and copying the data to cross-regional Cloud Object Storage buckets that can be accessed from another region if a disaster occurs.
@@ -40,7 +38,6 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 {: #logging-design}
 
 Use IBM Log Analysis to monitor operational logs for applications, platform resources, and infrastructure as follows:
-
 - Provision one IBM Logging instance in each region where the application is deployed to collect and monitor Platform Logs for Cloud Services that are provisioned in that region. See [Configuring Platform Logs](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-config_svc_logs) for details.
 
 - Install and configure logging agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. See [Logging with Infrastructure](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-infra_logging) for details. Use the [Ingestion REST API](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-ingest) to get the application logs.
@@ -57,7 +54,6 @@ Use IBM Log Analysis to monitor operational logs for applications, platform reso
 {: #auditing-design}
 
 Use [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started) to capture and monitor audit logs for Web Applications that are deployed on VPC Virtual Servers, as follows:
-
 - Provision one IBM Cloud Activity Tracker instance in each region where the application is deployed to collect audit logs for IBM Cloud resources used by the application. See [Activity Tracker - Getting Started](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives) for details.
 
 - Install and configure logging agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. See [Logging with Infrastructure](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-infra_logging) for details.
@@ -74,7 +70,6 @@ Use [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?top
 {: #alerting-design}
 
 It is important to factor in incident detection, notification, escalation, discovery, and declaration to provide realistic, achievable objectives that provide business value. Use [IBM Cloud Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-en-about) to route events associated with IBM Cloud resources (event sources) to a destination (delivery target for a notification) to trigger actions and enable automated response to issues impacting the availability of Web Applications, as follows:
-
 - Provision an instance of the Event Notification Service in each region where the Web application is deployed.
 
 - Define and build event notifications by linking event sources and destinations. As an example, select event sources to detect cloud provider level (for example, region, zone, services), network level (for example load balancers, global load balancers), security level and application level critical events and integrate them with destination targets. Select destinations such as ServiceNow to collect all events and assign owners and AIOps tool to automate response to events like the file system is full.

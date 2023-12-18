@@ -15,7 +15,7 @@ keywords:
 # Overview
 {: #overview}
 
-The web app cross-region resiliency pattern provides a solution design for a 3-tier web architecture deployment that meets disaster recovery requirements for enterprise workloads. It uses cloud platform capabilities to deploy resilient applications on [IBM Cloud Virtual Servers for VPC](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=ui). It is not intended for applications that are deployed on Power Virtual Servers (PowerVS) and does not cover application or database high availability design.
+The web app cross-region resiliency pattern provides a solution design for a 3-tier web architecture deployment that meets disaster recovery requirements for enterprise workloads. It uses cloud platform capabilities to deploy resilient applications on [Virtual Servers for VPC](https://cloud.ibm.com/docs/vpc?topic=vpc-getting-started&interface=ui). It is not intended for applications that are deployed on Power Virtual Servers (PowerVS) and does not cover application or database high availability design.
 
 This pattern is recommended to address out-of-region disaster recovery policies or business continuity policies with geo or distance compliance requirements. It supports recovery point objective (RPO)\<=15 mins and recovery time objective (RTO)\<=1-hour requirements.
 

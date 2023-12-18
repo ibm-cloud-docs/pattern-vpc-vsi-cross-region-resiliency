@@ -43,9 +43,9 @@ The web app cross-region resiliency architecture deploys a 3-tier web applicatio
 ## Architecture diagram
 {: #architecture-diagram}
 
-![Web app cross-region resiliency solution architecture](2050141b477bb83c52e6227c75d0adb0.png){: caption="Figure 1. Web app cross-region resiliency solution architecture" caption-side="bottom"}
+![Web app cross-region resiliency solution architecture](web-app-cross-region-architecture.png){: caption="Figure 1. Web app cross-region resiliency solution architecture" caption-side="bottom"}
 
-The web, application, and Ddtabase tiers are deployed on [Virtual Servers for VPC](/docs/vpc?topic=vpc-about-advanced-virtual-servers&interface=ui) (VSIs) within the Workload Virtual Private Cloud (VPC).
+The web, application, and database tiers are deployed on [Virtual Servers for VPC](/docs/vpc?topic=vpc-about-advanced-virtual-servers&interface=ui) (VSIs) within the Workload Virtual Private Cloud (VPC).
 - The virtual servers in the web and app tiers are placed within [Placement Groups](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling.
 - A [VPC Application Load Balancer](/docs/vpc?topic=vpc-load-balancers) is used at the web and app tiers to route traffic to healthy application instances.
 - IBM Storage Protect is used to create database backups to enable data recovery.
@@ -57,7 +57,8 @@ The web application is deployed across two regions by using an active-standby ap
 
 All data is encrypted using customer-provided keys that are managed by [Key Protect](/docs/key-protect?topic=key-protect-about).
 - All storage is encrypted at rest by using storage encryption with customer-provided keys that are managed by Key Protect. Key Protect is provisioned in the primary region and configured with failover units in the second region.
-- Data is encrypted in transit that uses TLS encryption. A [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager#about){: external} instance is deployed in each region to store and manage SSL/TLS certificates.
+- Data is encrypted in transit by using TLS encryption. A [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager#about){: external} instance is deployed in each region to store and manage SSL/TLS certificates.
+- The Cloud Internet Services is deployed as a proxy to the public VPC Application Load Balancer that front ends the web tier to provide Distributed Denial of Service (DDoS) protection and Web Application Firewall protection.
 
 ## Design scope
 {: #design-scope}
@@ -117,7 +118,7 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 |                    | VPC VSIs, VPC Block across multiple zones in two regions   | Web, app, database high availability and disaster recovery   |
 |                    | [IBM Storage Protect](https://cloud.ibm.com/catalog/content/SPonIBMCloud-20c54034-d319-48c0-beb6-0b4adc54265c-global){: external} | Database backups    |
 |                    | [Cross-Region Cloud Object Storage Buckets](/docs/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints-geo)   | Backup storage       |
-| Service management | [IBM Cloud Monitoring](/docs/monitoring?topic=monitoring-about-monitor)      | Apps and operational monitoring.           |
+| Service management | [IBM Cloud Monitoring](/docs/monitoring?topic=monitoring-about-monitor)      | Apps and operational monitoring           |
 |                    | [IBM Log Analysis](/docs/log-analysis?topic=log-analysis-getting-started)        | Apps and operational logs               |
 |                    | [IBM Cloud Activity Tracker](/docs/activity-tracker?topic=activity-tracker-getting-started)         | Audit logs           |
 {: caption="Table 2. Web app cross-region resiliency components" caption-side="bottom"}

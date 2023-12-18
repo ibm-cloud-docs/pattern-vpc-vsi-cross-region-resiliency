@@ -15,7 +15,7 @@ keywords:
 
 The web app cross-region resiliency pattern uses IBM Cloud Data Protection Services to protect all application data, including configuration and metadata, as well as all security data, including logs and credentials to access application or cloud resources, from unauthorized disclosure, as follows:
 
-- Application, databases, backup, and log data are encrypted at rest that uses storage encryption with customer-managed keys through the integration of VPC Block and Cloud Object Storage services with [IBM Cloud Key Management Services (KMS)](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-mng-data&interface=ui#about-encryption).
+- Application, databases, backup, and log data are encrypted at rest by using storage encryption with customer-managed keys through the integration of Block Storage for VPC and Cloud Object Storage services with [IBM Cloud Key Management Services (KMS)](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-mng-data&interface=ui#about-encryption).
 
 - The web app encrypts data in transit by using TLS encryption. The Secrets Manager cloud service is used to store and manage secrets and credentials to access applications and cloud resources, as well as SSL/TLS certificates and private keys.
 
@@ -24,4 +24,4 @@ The web app cross-region resiliency pattern uses IBM Cloud Data Protection Servi
    You could also use Hyper Protect Crypto Services (HPCS) as the Key Management Service. HPCS uses a dedicated HSM FIPS 140-2 Level 4 certified (highest level) and supports customer-managed master keys, giving the customer exclusive control of the entire key hierarchy. HPCS is recommended for financial services and other highly regulated industry applications.
    {: note}
 
-- Follow the disaster recovery recommendations provided in [Virtual private cloud resiliency: Data security design](#_Data_Security).
+- Follow the disaster recovery recommendations provided in [IBM Cloud VPC resiliency: Data security design](/docs/vpc-resiliency?topic=vpc-resiliency-security-design).

@@ -22,7 +22,6 @@ The Virtual Servers for the web tier, application tier, and database tier are pr
 - [Placement Groups](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui): create Placement Groups for Virtual Servers to avoid single point of failures. Select [power spread](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui#power-spread-placement-groups-for-vpc) to provision Virtual Servers in the Placement Group across different hosts to protect against host failures and on separate power and network domains to protect against power and network failures.
 
 - VPC Autoscale: create instance groups for autoscaling Virtual Servers in the web and app tiers to adjust compute resources to handle dynamic changes in load conditions.
-
     - Add the instance group to the Placement Group.
     - Add a load balancer to the instance group to balance incoming requests across instances and configure specific health checks.
 
