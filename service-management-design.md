@@ -29,7 +29,7 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 
 - Define alerts for the conditions that you need to monitor and configure notification channels to trigger the appropriate actions and automate incident responses. For example, you can configure a webhook notification to integrate IBM Cloud Monitoring with Service Now.
 
-- Configure notification channels to inform operation and support teams when an alert is triggered to support incident response processes.
+- Configure notification channels to inform operation and support teams when an alert is triggered to support incident response processes. \n
     Consider configuring streaming to forward selected metrics for further data processing, analysis or to trigger an automated response based on specific values. See [Streaming Data](https://cloud.ibm.com/docs/monitoring?topic=monitoring-data_streaming#data_streaming_ui) for details.
     {: note}
 
