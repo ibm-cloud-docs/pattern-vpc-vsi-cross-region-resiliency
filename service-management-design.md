@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-13"
+lastupdated: "2023-12-18"
 
 subcollection: whitepaper-vpc-resiliency
 
@@ -24,7 +24,7 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 
 - Install and configure monitoring agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. The monitoring agent collects the following metrics by default: system host, file, file system, process, and network metrics. See [Monitoring Infrastructure](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started#getting-started-step3-2) for details. IBM Cloud Monitoring also supports monitoring of application platform metrics through Prometheus exporters or custom metrics. See [Monitoring Features](https://cloud.ibm.com/docs/monitoring?topic=monitoring-features) for more details.
 
-    - Consider using [IBM Instana](https://www.ibm.com/docs/en/instana-observability/current?topic=overview) to get additional application performance metrics and automate application performance management for the Web, App, and Database tiers. IBM Instana provides data and actionable insights to monitor the applications and automate root-cause analysis.
+- Use [IBM Instana](https://www.ibm.com/docs/en/instana-observability/current?topic=overview) to get additional application performance metrics and automate application performance management for the Web, App, and Database tiers. IBM Instana provides data and actionable insights to monitor the applications and automate root-cause analysis.
 
 - Use the Monitoring dashboard to view, aggregate, and analyze performance metrics.
 
@@ -81,4 +81,4 @@ It is important to factor in incident detection, notification, escalation, disco
 
 - Add IBM Cloud Monitoring as an event notification source to route operational monitoring and logging alert notifications as well as audit logging alert notifications for Web Apps. See [Add an Event Notification Source](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-en-add-source) for details.
 
-- Set service destinations such as webhook and Code Engine for IBM Cloud Monitoring event sources to automate incident response and minimize downtime for Web Apps.
+- Set service destinations such as webhook and Code Engine for IBM Cloud Monitoring event sources to automate incident response and minimize downtime for web apps.

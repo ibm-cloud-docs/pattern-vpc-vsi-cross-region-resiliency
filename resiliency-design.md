@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-13"
+lastupdated: "2023-12-18"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -39,7 +39,7 @@ An alternative to deploying the database in VPC Virtual Server Instances is to u
 
 The web app cross-region resiliency pattern uses backup and restore to protect database contents from accidental deletion or corruption and provide short-term storage for historical data.
 
-Do the following to create transaction-consistent database backups that can be quickly restored in the same region where the Web Application is deployed:
+Do the following to create transaction-consistent database backups that can be quickly restored in the same region where the web application is deployed:
 
 - Use database-aware backup tools, such as [IBM Storage Protect](https://cloud.ibm.com/catalog/content/SPonIBMCloud-20c54034-d319-48c0-beb6-0b4adc54265c-global){: external}, to create and manage database backups.
 
@@ -49,16 +49,15 @@ Do the following to create transaction-consistent database backups that can be q
 
 Store database backups in [cross-region Cloud Object Storage](/docs/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints-geo) to enable recovery of historical data in the DR site if a regional outage occurs.
 
-Note that Web, App, or Database server backups are not needed since the entire Web Application is deployed in standby in the DR region and database contents are replicated asynchronously to the DR site as specified in the [High Availability Design](#91-high-availability-design) and [Disaster Recovery Design](#_Disaster_Recovery_Design) sections.
-{: caption="Table 2. High availability deployment options" caption-side="bottom"}
+Note that web, app, or database server backups are not needed since the entire web application is deployed in standby in the DR region and database contents are replicated asynchronously to the DR site as specified in the [High availability design](#91-high-availability-design) and [Disaster recovery design](#_Disaster_Recovery_Design) sections.
 
 ## Disaster recovery design
 {: #dr-design}
 
-The web app cross-region resiliency pattern deploys a 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in [VPC Resiliency on IBM Cloud](/docs/vpc-resiliency), is used to support Web Applications with RPO\<=15 mins and RTO\<=1-hour requirements.
+The web app cross-region resiliency pattern deploys a 3-tier web architecture across two regions following an active-standby architecture. The active-standby with hot DR site approach, described in [VPC Resiliency on IBM Cloud](/docs/vpc-resiliency), is used to support web applications with RPO\<=15 mins and RTO\<=1-hour requirements.
 
-The web, app, and database tiers are deployed in each region as specified in the [High Availability Design section](#91-high-availability-design). The Cloud Internet Service is configured as a Global Load Balancer with health checks to monitor the availability of the Web Application and route traffic to the DR region when needed.
+The web, app, and database tiers are deployed in each region as specified in the [High availability design section](#91-high-availability-design). The Cloud Internet Service is configured as a global load balancer with health checks to monitor the availability of the web application and route traffic to the DR region when needed.
 
 This pattern relies on database-aware data replication to keep an application-consistent copy of the data in the DR region and minimize data loss if unplanned regional outages occur in the primary region.
 
-The 3-tier Web Application could also be deployed across the two regions following an active-active architecture to support near zero RPO/RTO requirements. However, this would require application-level as well as database-level support to maintain data consistency. For example, the application might need to become ‘region aware’, by having region-specific data sets, adding a lot of complexities to the application design. For more information on how to design active-active application architectures across geographically dispersed sites, see [Always On: Assess, Design, Implement, and Manage Continuous Availability](http://www.redbooks.ibm.com/redpapers/pdfs/redp5109.pdf?_gl=1*12ze6gc*_ga*MTU5NjY3MTQzOS4xNjk1ODUxNTg0*_ga_FYECCCS21D*MTY5NTkwNDc3NS4zLjAuMTY5NTkwNjU3Ny4wLjAuMA..){: external}.
+The 3-tier web application could also be deployed across the two regions following an active-active architecture to support near zero RPO/RTO requirements. However, this would require application-level as well as database-level support to maintain data consistency. For example, the application might need to become ‘region aware’, by having region-specific data sets, adding a lot of complexities to the application design. For more information on how to design active-active application architectures across geographically dispersed sites, see [Always On: Assess, Design, Implement, and Manage Continuous Availability](http://www.redbooks.ibm.com/redpapers/pdfs/redp5109.pdf?_gl=1*12ze6gc*_ga*MTU5NjY3MTQzOS4xNjk1ODUxNTg0*_ga_FYECCCS21D*MTY5NTkwNDc3NS4zLjAuMTY5NTkwNjU3Ny4wLjAuMA..){: external}.

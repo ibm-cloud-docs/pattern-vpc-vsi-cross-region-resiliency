@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-12-13"
+lastupdated: "2023-12-18"
 
 subcollection: pattern-vpc-vsi-cross-region-resiliency
 
@@ -13,7 +13,7 @@ keywords:
 # References
 {: #references}
 
-1. [VPC Resiliency on IBM Cloud White Paper](/docs/vpc-resiliency)
+1. [Virtual private cloud resiliency white paper](/docs/vpc-resiliency)
 2. [Placement Groups for VPC](/docs/vpc?topic=vpc-about-placement-groups-for-vpc)
 3. [ALB Multi-Zone Configuration](/docs/vpc?topic=vpc-load-balancers-about&interface=api#horizontal-scaling)
 4. [IBM Cloud SLA](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en#detail-document){: external}
