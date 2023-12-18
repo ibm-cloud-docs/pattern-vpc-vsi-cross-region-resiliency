@@ -13,7 +13,7 @@ keywords:
 # References
 {: #references}
 
-1. [IBM Cloud VPC resiliency white paper](/docs/vpc-resiliency)
+1. [IBM Cloud VPC resiliency](/docs/vpc-resiliency)
 2. [Placement Groups for VPC](/docs/vpc?topic=vpc-about-placement-groups-for-vpc)
 3. [VPC ALB multi-zone configuration](/docs/vpc?topic=vpc-load-balancers-about&interface=api#horizontal-scaling)
 4. [IBM Cloud SLA](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en#detail-document){: external}
