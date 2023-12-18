@@ -97,16 +97,17 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 ## Components
 {: #components}
 
-| Aspects | Solution Components | How the component is used |
+| Aspects | Solution components | How the component is used |
 | -------------- | -------------- | -------------- |
 | Compute            | [Virtual Servers for VPC](/docs/vpc?topic=vpc-about-advanced-virtual-servers&interface=ui)                        | Web, app, and database servers           |
 | Storage            | [Block Storage for VPC](/docs/openshift?topic=openshift-vpc-block)                                    | Database servers storage                     |
 |                    | [Cloud Object Storage](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)                                                                                      | Web app static content, backups, logs (application, operational, and audit logs)                                                       |
 | Networking         | [VPC Virtual Private Network (VPN) Client](/docs/iaas-vpn?topic=iaas-vpn-getting-started)                | Remote access to manage resources in a private network                                                       |
-|                    | [Virtual Private Clouds (VPCs), Subnets, Security Groups (SGs), ACLs](/docs/vpc?topic=vpc-getting-started)                                                                                          | VPCs for workload isolation Subnets, SGs, and ACLs for restricted access to web, app, and database tiers                              |
+|                    | [Virtual Private Clouds (VPCs), Subnets, Security Groups (SGs), ACLs](/docs/vpc?topic=vpc-getting-started)                                                                                          | VPCs for workload isolation \n Subnets, SGs, and ACLs for restricted access to web, app, and database tiers                              |
 |                    | [Transit Gateway (TGW)](/docs/transit-gateway?topic=transit-gateway-getting-started)                                                                                                                | Local Transit Gateway connects the Workload and Management VPCs within a region. \n \n Global Transit Gateway connects VPCs across regions. |
-|                    | [Virtual Private Gateway & Virtual Private Endpoint (VPE)](/docs/vpc?topic=vpc-about-vpe)               | Private network access to Cloud Services, for example Key Protect, Cloud Object Storage, and so on.        | [VPC Application Load Balancer](/docs/vpc?topic=vpc-load-balancers)                | Application Load Balancing for web and app tiers   |
+|                    | [Virtual Private Gateway & Virtual Private Endpoint (VPE)](/docs/vpc?topic=vpc-about-vpe)               | Private network access to Cloud Services, for example Key Protect, Cloud Object Storage, and so on.        |
 |                    | [Public Gateway](/docs/vpc?topic=vpc-about-networking-for-vpc&interface=cli#public-gateway-for-external-connectivity)              | Web app access to the internet    |
+|                    | [VPC Application Load Balancer](/docs/vpc?topic=vpc-load-balancers)                                                                                                                                 | Application load balancing for web and app tiers                                                                                      |
 |                    | [Cloud Internet Services (CIS)](/docs/cis?topic=cis-getting-started)                                                                                                                                | Global load balancing between regions. \n Public DNS resolution.  |
 |                    | [DNS Services](/docs/dns-svcs?topic=dns-svcs-about-dns-services)                    | Private DNS resolution                                                                                                                |
 | Security           | [IAM](/docs/account?topic=account-cloudaccess)   | IBM Cloud Identity & Access Management           |
