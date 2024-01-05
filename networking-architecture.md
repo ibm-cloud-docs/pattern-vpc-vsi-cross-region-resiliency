@@ -47,7 +47,7 @@ The following are cloud native connectivity architecture decisions for this desi
 {: caption="Table 3. Cloud native connectivity architecture decisions" caption-side="bottom"}
 
 ## Architecture decisions for load balancing
-{: #network-segmentation-isolation}
+{: #network-load-balancing}
 
 The following are load balancing architecture decisions for this design.
 

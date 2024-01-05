@@ -118,7 +118,7 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 | Resiliency         | [Placement Groups](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) and [Instance Groups](/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) | To avoid single points of failure and adjust capacity based on load changes     |
 |                    | VPC VSIs, VPC Block across multiple zones in two regions   | Web, app, database high availability and disaster recovery   |
 |                    | [IBM Storage Protect](https://cloud.ibm.com/catalog/content/SPonIBMCloud-20c54034-d319-48c0-beb6-0b4adc54265c-global){: external} | Database backups    |
-|                    | [Cross-Region Cloud Object Storage Buckets](/docs/cloud-object-storage/basics?topic=cloud-object-storage-endpoints#endpoints-geo)   | Backup storage       |
+|                    | [Cross-Region Cloud Object Storage Buckets](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-geo)   | Backup storage       |
 | Service management | [IBM Cloud Monitoring](/docs/monitoring?topic=monitoring-about-monitor)      | Apps and operational monitoring           |
 |                    | [IBM Log Analysis](/docs/log-analysis?topic=log-analysis-getting-started)        | Apps and operational logs               |
 |                    | [IBM Cloud Activity Tracker](/docs/activity-tracker?topic=activity-tracker-getting-started)         | Audit logs           |
