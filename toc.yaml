@@ -14,18 +14,15 @@ toc:
     path: pattern-vpc-vsi-cross-region-resiliency
     description: This pattern provides a solution design for a 3-tier web architecture deployment on Virtual Servers for VPC  that meets disaster recovery requirements for enterprise workloads.
     label: Web app cross-region resiliency
-
   entries:
   - navgroup:
       id: overview
       topics:
       - overview.md
-
   - navgroup:
       id: architecture
       topics:
       - reference-architecture-web-app-cross-region.md
-
   - navgroup:
       id: plan
       topics:
@@ -61,18 +58,15 @@ toc:
           - topic: service-management-architecture.md
             navtitle: Service management
           # - other-architecture.md
-
   - navgroup:
       id: deploy
       topics:
       - topic-7.md
       - topic-8.md
-
   - navgroup:
       id: reference
       topics:
       - references.md
-
   - navgroup:
       id: help
       topics:
