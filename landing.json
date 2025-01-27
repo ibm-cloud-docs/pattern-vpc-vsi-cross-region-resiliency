@@ -1,6 +1,6 @@
 {
+  "version": 2,
   "title": "Web app cross-region resiliency",
-  "lastupdated": "2025-01-27",
   "introduction": "The web app cross-region resiliency pattern deploys a 3-tier web application on VPC Virtual Servers that use compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.",
   "section_topics": {
     "links": [
