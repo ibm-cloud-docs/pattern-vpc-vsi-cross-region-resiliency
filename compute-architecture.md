@@ -25,4 +25,4 @@ The following are computer architecture decisions for the web app cross-region r
 | Virtual Servers for VPC: Profile for database tier                    |              | - Balanced \n - Compute \n - Memory               | Balance              | The balance profile is recommended for databases. |
 | Virtual Servers for VPC: Placement Group configuration | Provide compute resources that are highly available and can handle increased workload demands   | - Host spread \n - Power spread     | Power spread    | Power spread ensures that the virtual servers are placed on different computer hosts with different power and network supplies. |
 | Virtual Servers for VPC: High availability configuration |            | - Multiple instances-single zone \n - Multiple instances-multiple zones | Multiple instances-multiple zones | Virtual servers are deployed across multiple availability zones to protect the application from zone outages. |
-{: caption="Table 1. Architecture decisions for compute" caption-side="bottom"}
+{: caption="Architecture decisions for compute" caption-side="bottom"}

@@ -43,7 +43,7 @@ The web app cross-region resiliency architecture deploys a 3-tier web applicatio
 ## Architecture diagram
 {: #architecture-diagram}
 
-![Web app cross-region resiliency solution architecture](web-app-cross-region-architecture.png){: caption="Figure 1. Web app cross-region resiliency solution architecture" caption-side="bottom"}
+![Web app cross-region resiliency solution architecture](web-app-cross-region-architecture.png){: caption="Web app cross-region resiliency solution architecture" caption-side="bottom"}
 
 The web, application, and database tiers are deployed on [Virtual Servers for VPC](/docs/vpc?topic=vpc-about-advanced-virtual-servers&interface=ui) (VSIs) within the Workload Virtual Private Cloud (VPC).
 - The virtual servers in the web and app tiers are placed within [Placement Groups](/docs/vpc?topic=vpc-about-placement-groups-for-vpc&interface=ui) for host failure protection and are part of [Instance Groups](/docs/vpc?topic=vpc-creating-auto-scale-instance-group&interface=ui) for autoscaling.
@@ -77,7 +77,7 @@ Following the [Architecture Framework](/docs/architecture-framework?topic=archit
 
 - **Service management:** Monitoring, Logging, Auditing, Alerting
 
- ![Web app cross-region resiliency architecture design scope](heat-map-vpc-cross-region.svg){: caption="Figure 2. Web app cross-region resiliency architecture design scope" caption-side="bottom"}
+ ![Web app cross-region resiliency architecture design scope](heat-map-vpc-cross-region.svg){: caption="Web app cross-region resiliency architecture design scope" caption-side="bottom"}
 
 The Architecture Framework provides a consistent approach to design cloud solutions by addressing requirements across a set of "aspects" and "domains", which are technology-agnostic architectural areas that need to be considered for any enterprise solution. See [Introduction to the Architecture Framework](/docs/architecture-framework?topic=architecture-framework-intro) for more details.
 
@@ -92,7 +92,7 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 | Security           | * Ensure that all operator actions are run securely through a bastion host. \n * Protect the boundaries of the application against denial-of-service and application-layer attacks. \n * Encrypt all application data in transit and at rest to protect it from unauthorized disclosure. \n * Encrypt all backup data to protect it from unauthorized disclosure. \n * Encrypt all security data (operational and audit logs) to protect from unauthorized disclosure. \n * Encrypt all data by using customer-managed keys to meet regulatory compliance requirements for more security and customer control. \n * Protect secrets through their entire lifecycle and secure them using access control measures. |
 | Resiliency         | * Support application availability targets and business continuity policies. \n * Ensure availability of the application if planned and unplanned outages occur. \n * Provide highly available compute, storage, network, and other cloud services to handle application load and performance requirements. \n * Backup application data to enable recovery if unplanned outages occur. \n * Provide highly available storage for security data (logs) and backup data. \n * Automate recovery tasks to minimize downtime |
 | Service management | * Monitor system and application health metrics and logs to detect issues that might impact the availability of the application. \n * Generate alerts/notifications about issues that might impact the availability of applications to trigger appropriate responses to minimize downtime. \n * Monitor audit logs to track changes and detect potential security problems. \n * Provide a mechanism to identify and send notifications about issues that are found in audit logs. |
-{: caption="Table 1. Web app cross-region resiliency requirements" caption-side="bottom"}
+{: caption="Web app cross-region resiliency requirements" caption-side="bottom"}
 
 ## Components
 {: #components}
@@ -122,4 +122,4 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 | Service management | [IBM Cloud Monitoring](/docs/monitoring?topic=monitoring-about-monitor)      | Apps and operational monitoring           |
 |                    | [IBM Log Analysis](/docs/log-analysis?topic=log-analysis-getting-started)        | Apps and operational logs               |
 |                    | [IBM Cloud Activity Tracker](/docs/activity-tracker?topic=activity-tracker-getting-started)         | Audit logs           |
-{: caption="Table 2. Web app cross-region resiliency components" caption-side="bottom"}
+{: caption="Web app cross-region resiliency components" caption-side="bottom"}

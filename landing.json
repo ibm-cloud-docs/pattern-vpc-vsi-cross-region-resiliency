@@ -1,0 +1,40 @@
+{
+  "title": "Web app cross-region resiliency",
+  "lastupdated": "2025-01-27",
+  "introduction": "The web app cross-region resiliency pattern deploys a 3-tier web application on VPC Virtual Servers that use compute, storage, and network cloud resources as well as other Cloud Services provisioned in multiple availability zones across two regions to protect from region-wide natural disasters or outages.",
+  "section_topics": {
+    "links": [
+      {
+        "title": "Solution overview",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-overview"
+      },
+      {
+        "title": "Reference Architecture",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-web-app-cross-region"
+      },
+      {
+        "title": "Design considerations",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-compute-design"
+      },
+      {
+        "title": "Architecture decisions",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-compute-architecture"
+      },
+      {
+        "title": "Deploying",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-deploying-a-vpc-vsi-cross-region-architecture"
+      },
+      {
+        "title": "References",
+        "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-references"
+      }
+    ]
+  },
+  "section_architectures": [
+    {
+      "title": "Web app cross-region resiliency",
+      "href": "/docs/pattern-vpc-vsi-cross-region-resiliency?topic=pattern-vpc-vsi-cross-region-resiliency-web-app-cross-region",
+      "deployable": false
+    }
+  ]
+}
