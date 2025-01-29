@@ -29,6 +29,7 @@ The following sections summarize the architecture decisions for service manageme
 
 | Architecture decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
+
 | Log Monitoring of Cloud infrastructure and services | Monitor operational logs to detect issues that might impact the availability of the system. | - IBM Cloud Logs \n - BYO Logging Tool | IBM Cloud Logs | IBM Cloud Logs collects operational logs from applications, platform resources, and infrastructure and provides interfaces to view and analyze all logs. |
 | Log Monitoring of Web App | Monitor application operational logs to detect issues that might impact the availability of the app.| - IBM Cloud Logging \n - Application Logging Tool \n - BYO Logging Tool | IBM Cloud Logs + Application Logging Tool | Use the Application Logging Tool to send application logs to IBM Cloud Logs and aggregate application-specific log details. |
 | Log Monitoring of DB | Monitor database logs to detect issues that might impact the availability of the database.| - IBM Cloud Logs \n - DB Tools \n - BYO Logging Tool | IBM Cloud Logs + DB Tools | DB tools are used along with IBM Cloud Logs to get more DB-specific log information. |
@@ -39,6 +40,7 @@ The following sections summarize the architecture decisions for service manageme
 
 | Architecture decision | Requirement | Alternative | Decision | Rationale |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
+
 | Audit Logging | Monitor audit logs to track changes to cloud resources and detect potential security problems. | IBM Cloud Logs with IBM Cloud Activity Tracker Event Routing   | IBM Cloud Logs with IBM Cloud Activity Tracker Event Routing | IBM Cloud Logs with IBM Cloud Activity Tracker Event Routing provides an interface to capture, store, view, search, and monitor user-initiated actions to provision, access, and manage IBM Cloud resources. |
 {: caption="Architecture decisions for auditing" caption-side="bottom"}
 
