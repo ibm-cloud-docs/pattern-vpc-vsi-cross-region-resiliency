@@ -35,39 +35,19 @@ Use IBM Cloud Monitoring to get a comprehensive view of the health of the Web Ap
 
 - Backup historical metrics that might be needed for auditing purposes by querying and copying the data to cross-regional Cloud Object Storage buckets that can be accessed from another region if a disaster occurs.
 
-## Logging design
+## Auditing and Logging design
 {: #logging-design}
 
-Use IBM Log Analysis to monitor operational logs for applications, platform resources, and infrastructure as follows:
-- Provision one IBM Logging instance in each region where the application is deployed to collect and monitor Platform Logs for Cloud Services that are provisioned in that region. See [Configuring Platform Logs](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-config_svc_logs) for details.
+Use [IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl) to monitor auditing and operational logs for applications, platform resources, and infrastructure.  IBM Cloud Logs provides the following capabilites:
 
-- Install and configure logging agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. See [Logging with Infrastructure](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-infra_logging) for details. Use the [Ingestion REST API](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-ingest) to get the application logs.
+- Customizable user interface for live streaming of log tailing, real-time troubleshooting issue alerts, and log archiving.
+- Use of logging agent to collect and send infrastructure and application logs to an IBM Cloud Logs instance directly.
+- Aggregated logs across environments and cloud providers.
+- Historical access to logs.
+- Highly available, scalable, and compliant with industry security standards.
+- Integrated with IBM Cloud IAM for user access management.
 
-- Use the Logging dashboard to view, analyze, and manage logs.
-
-- Define alerts for the conditions that you need to monitor and integrate with IBM Cloud Monitoring to send notifications and manage log alerts along with metrics alerts. See [Integrating with IBM Cloud Monitoring](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-monitoring) for details.
-
-   Consider configuring streaming to forward logs to other tools such as data lakes or Security Information and Event Management (SIEM) for further analysis or threat detection and investigation. See [Streaming Data](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-streaming) for details.
-   {: note}
-
-- Copy logs to IBM Cloud Object Storage to support \>30 days data search or data retention policy requirements. See [Configuring Archiving Logs to Cloud Object Storage](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-archiving-ov) for details.
-
-## Auditing design
-{: #auditing-design}
-
-Use [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started) to capture and monitor audit logs for Web Applications that are deployed on VPC Virtual Servers, as follows:
-- Provision one IBM Cloud Activity Tracker instance in each region where the application is deployed to collect audit logs for IBM Cloud resources used by the application. See [Activity Tracker - Getting Started](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives) for details.
-
-- Install and configure logging agents on each of the VPC Virtual Servers that are used to deploy the web, app, and database tiers. See [Logging with Infrastructure](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-infra_logging) for details.
-
-- Use the Logging dashboard to view, analyze, and manage logs.
-
-- Create alerts to get notifications when configuration changes are made to the IBM Cloud account and integrate with IBM Cloud Monitoring to send notifications and manage audit log alerts along with metrics alerts. See [Integrating with IBM Cloud Monitoring](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-monitoring) for details.
-
-   Consider configuring streaming to forward logs to other tools such as data lakes or Security Information and Event Management (SIEM) for further analysis or threat detection and investigation. See [Streaming Data](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-streaming) for details.
-   {: note}
-
-- Copy audit logs to IBM Cloud Object Storage to support \>30 days data search or data retention policy requirements. See [Configuring Archiving Logs to Cloud Object Storage](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-archiving-ov) for details.
+See [Getting started with IBM Cloud Logs](docs/cloud-logs?topic=cloud-logs-getting-started) on provisioning and setting up IBM Cloud Logs for both auditing and application logging.
 
 ## Alerting design
 {: #alerting-design}
