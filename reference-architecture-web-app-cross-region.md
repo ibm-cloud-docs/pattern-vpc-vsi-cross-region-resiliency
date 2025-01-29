@@ -120,6 +120,5 @@ The Architecture Framework provides a consistent approach to design cloud soluti
 |                    | [IBM Storage Protect](https://cloud.ibm.com/catalog/content/SPonIBMCloud-20c54034-d319-48c0-beb6-0b4adc54265c-global){: external} | Database backups    |
 |                    | [Cross-Region Cloud Object Storage Buckets](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-geo)   | Backup storage       |
 | Service management | [IBM Cloud Monitoring](/docs/monitoring?topic=monitoring-about-monitor)      | Apps and operational monitoring           |
-|                    | [IBM Log Analysis](/docs/log-analysis?topic=log-analysis-getting-started)        | Apps and operational logs               |
-|                    | [IBM Cloud Activity Tracker](/docs/activity-tracker?topic=activity-tracker-getting-started)         | Audit logs           |
+|                    | [IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-getting-started)                                                                                                        | Audit events, Apps and operational logs   
 {: caption="Web app cross-region resiliency components" caption-side="bottom"}
