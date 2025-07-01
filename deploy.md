@@ -10,7 +10,6 @@ keywords:
 {{site.data.keyword.attribute-definition-list}}
 
 # Deploying a VPC VSI cross region architecture
-
 {: #vpc-vsi-cross-da}
 
 This guide outlines deploying a 3-tier web architecture in a cross-regional configuration, specifically in two distinct regions for a disaster recovery scenario. The deployment is based on an existing deployable architecture template, as well as a series of customizations to tailor the setup to the specific requirements for your environment.
@@ -27,7 +26,7 @@ You need the following items to deploy and configure this reference architecture
 * A VPC [public and private SSH key pair](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys&interface=ui) that is not in the deployment region.
 * An [IBM Cloud API key](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui) for the user or service ID with the correct IAM access policies.
 * Review [Planning for the landing zone deployable architectures](https://cloud.ibm.com/docs/secure-infrastructure-vpc?topic=secure-infrastructure-vpc-plan).
-  
+
 ## Provision Architecture
 {: #provision-vpc-vsi-cross}
 
